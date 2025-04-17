@@ -1,0 +1,55 @@
+{
+    "input_keys": [
+        "RLNS_1",
+        "RLNS_2",
+        "RLNS_3",
+        "RLTS_1",
+        "RLTS_2",
+        "RLTS_3",
+        "VPAR_SHEAR_1",
+        "VEXB_SHEAR",
+        "TAUS_2",
+        "TAUS_3",
+        "AS_2",
+        "AS_3",
+        "VPAR_1",
+        "ZEFF",
+        "RMIN_LOC",
+        "RMAJ_LOC",
+        "ZMAJ_LOC",
+        "DRMAJDX_LOC",
+        "DZMAJDX_LOC",
+        "KAPPA_LOC",
+        "S_KAPPA_LOC",
+        "DELTA_LOC",
+        "S_DELTA_LOC",
+        "ZETA_LOC",
+        "S_ZETA_LOC",
+        "Q_LOC",
+        "Q_PRIME_LOC",
+        "P_PRIME_LOC",
+        "BETAE_log10",
+        "XNUE_log10",
+        "DEBYE_log10"
+    ],
+    "target_keys": [
+        "modemaxflux_qlgyro_itkem_sat2_azf-1"
+    ],
+    "log_ops_keys": [
+        "BETAE_log10",
+        "XNUE_log10",
+        "DEBYE_log10"
+    ],
+    "target_log10_max": [
+        3.2939444814493224,
+        3.531735293931157,
+        2.258141213396948,
+        3.1051495853769655
+    ],
+    "target_log10_min": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+    ]
+}
