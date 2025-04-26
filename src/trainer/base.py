@@ -1,5 +1,5 @@
 import torch
-from template_trainer.utils import WarmupCosineDecayScheduler
+from src.utils import WarmupCosineDecayScheduler
 import wandb
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -212,7 +212,7 @@ class Base_Trainer:
         """
         data = self.move_to_device(data)
         loss = self._loss_fn(data)
-
+ 
         loss.backward()
 
         # Gradient clipping

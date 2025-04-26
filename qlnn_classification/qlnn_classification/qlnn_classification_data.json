@@ -32,9 +32,14 @@
         "XNUE_log10",
         "DEBYE_log10"
     ],
-    "target_keys": [
-        "modemaxflux_qlgyro_itkem_sat2_azf-1"
+    "target_keys" : [
+        "OUT_G_elec_qlgyro_sat2_azf1", 
+        "OUT_P_ions_qlgyro_sat2_azf1", 
+        "OUT_Q_elec_qlgyro_sat2_azf1", 
+        "OUT_Q_ions_qlgyro_sat2_azf1"
+
     ],
+    "mode_key": "modemaxflux_qlgyro_itkem_sat2_azf-1",
     "log_ops_keys": [
         "BETAE_log10",
         "XNUE_log10",
