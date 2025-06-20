@@ -6,7 +6,7 @@ authors = ["Lucas Hlaing"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.13"
+python = ">=3.11"
 numpy = "==1.26.2"
 matplotlib = ">=3.10.3,<4.0.0"
 
