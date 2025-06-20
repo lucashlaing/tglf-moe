@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import wandb
 import os
-from src.utils import r_squared
+from utils import r_squared
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -138,19 +138,19 @@ class MoETrainer(Base_Trainer):
         r2, mode_accuracy = self.get_metrics(data)
         loss = self.get_loss(data)
 
-        # printing metrics
-        print(f"Step {self.train_step}, {prefix}_total_loss: {loss.item():.6f}")
-        print(f"{prefix}_task_loss: {self.task_loss:.6f}")
-        print(f"{prefix}_mode_loss: {self.mode_loss:.6f}")
-
         # Print overall mean R² first
         print(f"{prefix}_r2_mean: {r2.mean().item():.6f}")
         
         # Print R² for each dimension
-        for i in range(r2.shape[0]):
-            print(f"{prefix}_r2_dim{i}: {r2[i].item():.6f}")
-        print(f"{prefix}_mode_accuracy: {mode_accuracy.item():.6f}")
+        # for i in range(r2.shape[0]):
+        #    print(f"{prefix}_r2_dim{i}: {r2[i].item():.6f}")
+        # print(f"{prefix}_mode_accuracy: {mode_accuracy.item():.6f}")
 
+        # printing metrics
+        # print(f"Step {self.train_step}, {prefix}_total_loss: {loss.item():.6f}")
+        # moved below beacuse baord_loss also prints total loss
+        print(f"{prefix}_task_loss: {self.task_loss:.6f}")
+        print(f"{prefix}_mode_loss: {self.mode_loss:.6f}")
     
     def eval_plot(self, data, prefix, board=True):
         """

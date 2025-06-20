@@ -1,0 +1,40 @@
+project_name: tglf-moe
+model:
+  # tglf_bal_eig:
+  #   command: >-
+  #     [](git fetch origin; git reset --hard origin/nautilus_bal; make download file=tglf_sumf_data_full_madcut_filter/;
+  #     python src/clean_h5_keys.py tglf_sumf_data_full_madcut_filter/ tglf_sumf_data_full_madcut_filter_cleaned/;)
+  #     python src/run_all.py ++bal.acquisition_method=EIG
+  #   gpu_count: 1
+  #   memory: 32
+  #   cpu_count: 16
+  #   ephemeral_storage: 300  
+
+  tglf_moe_norm:
+    command: >-
+      [](git fetch origin; git reset --hard origin/main; make download file=tglf_sumf_data_full_madcut_filter/;
+      python src/run_all.py;) 
+    gpu_count: 1
+    memory: 8
+    cpu_count: 8
+    ephemeral_storage: 30  
+  
+  # tglf_bal_random_with_resume:
+  #   command: >-
+  #     [](git fetch origin; git reset --hard origin/nautilus_bal; make download file=tglf_sumf_data_full_madcut_filter/;
+  #     python src/clean_h5_keys.py tglf_sumf_data_full_madcut_filter/ tglf_sumf_data_full_madcut_filter_cleaned/;) 
+  #     python src/run_all.py ++bal.acquisition_method=random
+  #   gpu_count: 1
+  #   memory: 16
+  #   cpu_count: 16
+  #   ephemeral_storage: 300  
+
+dataset:
+  data1:
+    hparam:
+      _dummy: 0
+run:
+  dataset: [data1]
+  # model: [tglf_bal_random, tglf_bal_eig]
+  model: [tglf_moe_norm]
+  # model: [new_spectra_deter_loss_random_no_rho2, new_spectra_deter_loss_eig_no_rho2]

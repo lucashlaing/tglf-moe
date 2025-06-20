@@ -1,5 +1,5 @@
 import torch
-from src.utils import WarmupCosineDecayScheduler
+from utils import WarmupCosineDecayScheduler
 import wandb
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

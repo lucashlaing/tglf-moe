@@ -6,7 +6,7 @@ import pytz
 from datetime import datetime
 from omegaconf import OmegaConf
 from torch.utils.data import DataLoader
-from src.utils import (
+from utils import (
     set_seed,
     timer,
     InfiniteDataLooper,

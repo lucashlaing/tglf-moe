@@ -1,0 +1,194 @@
+project_name: tglf-moe
+namespace: ai-fusion-ga
+user: lucashlaing
+
+# uncomment these if you are using a pod
+gpu_count: 1           # 1 or 2 is allowed for an interactive pod
+cpu_count: 16          # optional, keeps the scheduler happy
+memory: 32
+ephemeral_storage: 300  
+
+# blacklisted hostnames avoid certain instances
+hostname_blacklist:
+ - ucm-fiona01.ucmerced.edu
+ - fiona8.ucsc.edu
+ - k8s-chase-ci-05.calit2.optiputer.net
+ - k8s-chase-ci-04.calit2.optiputer.net
+ - gpu-09.nrp.mghpcc.org
+
+# whitelisted hostnames use only the listed instances
+hostname_whitelist:
+  # - hcc-nrp-shor-c5226.unl.edu
+  # - hcc-gpn-argo-1.unl.edu
+  # - k8s-4090-01.calit2.optiputer.net
+  # - k8s-chase-ci-07.calit2.optiputer.net
+  # - k8s-gen4-sm.calit2.optiputer.net
+  # - ry-gpu-09.sdsc.optiputer.net
+  # - ry-gpu-11.sdsc.optiputer.net
+  # - uicnrp-fiona.evl.uic.edu
+  # - gpn-fiona-mizzou-4.rnet.missouri.edu
+  # - gpn-fiona-mizzou-6.rnet.missouri.edu
+  # # - hcc-nrp-shor-c5934.unl.edu
+  # - k8s-3090-01.calit2.optiputer.net
+  # - nautilus-ext-gpu01.fullerton.edu
+  # - ry-gpu-07.sdsc.optiputer.net
+  # - ry-gpu-09.sdsc.optiputer.net
+  # - ry-gpu-11.sdsc.optiputer.net
+  # - node-2-1.sdsc.optiputer.net
+  # - node-2-2.sdsc.optiputer.net
+  # - node-2-4.sdsc.optiputer.net
+  # - node-2-3.sdsc.optiputer.net
+  # - node-1-2.sdsc.optiputer.net
+  # - node-1-4.sdsc.optiputer.net
+  # - node-1-1.sdsc.optiputer.net
+  # - rci-nrp-gpu-01.sdsu.edu
+  # - rci-nrp-gpu-03.sdsu.edu
+  # - rci-nrp-gpu-05.sdsu.edu
+  # - rci-nrp-gpu-04.sdsu.edu
+  # - rci-nrp-gpu-02.sdsu.edu
+  # - gp-engine.beocat.ksu.edu
+  # - gpengine-uams.areon.net
+  # - gpn-fiona-mizzou-2.rnet.missouri.edu
+  # - gpn-fiona-mizzou-3.rnet.missouri.edu
+  # - gpengine-uark.areon.net
+  # - gpn-fiona-mizzou-5.rnet.missouri.edu
+  # - discover-nrp-01.sdccd.edu
+  # - hcc-prp-c5038.unl.edu
+  # - nautilus02.hsrn.nyu.edu
+  # - gpu00.nrp.hpc.udel.edu
+  # - nrp-01.csumb.edu
+  # - k8s-a6000-01.calit2.optiputer.net
+  # - k8s-gpu-5.ucsc.edu
+  # - cph-dgx-node2.humboldt.edu
+  # - cph-dgx-node7.humboldt.edu
+  # - cph-dgx-node8.humboldt.edu
+  # - cph-dgx-node9.humboldt.edu
+  # - v100-cc-star-01.noc.ucsb.edu
+  # - tu.gp-engine.greatplains.net
+  # - gpn-fiona-mizzou-8.rnet.missouri.edu
+  # - gpu-01.csusb.edu
+  # - gpu00.nrp.hpc.udel.edu
+  # - gp-engine.beocat.ksu.edu
+  # - hcc-nrp-shor-c5834.unl.edu
+  # - sphinx.sdstate.edu
+  # - tu.gp-engine.greatplains.net
+  # - uicnrp-fiona.evl.uic.edu
+  # - uicnrp-fiona2.evl.uic.edu
+  # - k8s-3090-01.calit2.optiputer.net
+  # - ry-gpu-04.sdsc.optiputer.net
+  # - ry-gpu-12.sdsc.optiputer.net
+  # - ry-gpu-01.sdsc.optiputer.net
+  # - k8s-3090-02.clemson.edu
+  # - hcc-chase-shor-c4709.unl.edu
+  # - hcc-chase-shor-c4715.unl.edu
+  # - ry-gpu-10.sdsc.optiputer.net
+  # - node-2-1.sdsc.optiputer.net
+  # - node-2-4.sdsc.optiputer.net
+  # - node-1-4.sdsc.optiputer.net
+  # - node-1-1.sdsc.optiputer.net
+  # - rci-nrp-gpu-01.sdsu.edu
+  # - rci-nrp-gpu-03.sdsu.edu
+  # - rci-nrp-gpu-04.sdsu.edu
+  # - rci-nrp-gpu-02.sdsu.edu
+  # - rci-nrp-gpu-05.sdsu.edu
+  # - gpn-fiona-mizzou-3.rnet.missouri.edu
+  # - gpn-fiona-mizzou-4.rnet.missouri.edu
+  # - gpn-fiona-mizzou-6.rnet.missouri.edu
+  # - hcc-gpengine-shor-c5303.unl.edu
+  # - gp-engine.beocat.ksu.edu
+  # - gpengine-uark.areon.net
+  # - gpn-fiona-mizzou-5.rnet.missouri.edu
+  # - node-2-2.sdsc.optiputer.net
+  # # - hcc-nrp-shor-c5934.unl.edu
+  # - gpu-01.nrp.mghpcc.org
+  # - gpu-03.nrp.mghpcc.org
+  # - gpu-06.nrp.mghpcc.org
+  # - gpu-08.nrp.mghpcc.org
+  # - gpu-09.nrp.mghpcc.org
+  # - gpu-10.nrp.mghpcc.org
+  # - gpu-11.nrp.mghpcc.org
+  # - gpu-18.nrp.mghpcc.org
+  # - hcc-nrp-shor-c5805.unl.edu
+  # - hcc-nrp-shor-c5813.unl.edu
+  # - hcc-nrp-shor-c6013.unl.edu
+  # - hcc-nrp-shor-c6021.unl.edu
+  # - hcc-nrp-shor-c6025.unl.edu
+  # - uicnrp-fiona2.evl.uic.edu
+  # - uicnrp-fiona.evl.uic.edu
+  # - k8s-3090-01.calit2.optiputer.net
+  # - nautilus-ext-gpu01.fullerton.edu
+  # - ry-gpu-04.sdsc.optiputer.net
+  # - ry-gpu-12.sdsc.optiputer.net
+  # - ry-gpu-01.sdsc.optiputer.net
+  # - ry-gpu-10.sdsc.optiputer.net
+  # - k8s-3090-02.clemson.edu
+  # - hcc-chase-shor-c4709.unl.edu
+  # - prp01.ifa.hawaii.edu
+  # - hcc-chase-shor-c4715.unl.edu
+  # - node-2-1.sdsc.optiputer.net
+  # - node-2-4.sdsc.optiputer.net
+  # - node-1-1.sdsc.optiputer.net
+  # - rci-nrp-gpu-01.sdsu.edu
+  # - rci-nrp-gpu-03.sdsu.edu
+  # - rci-nrp-gpu-04.sdsu.edu
+  # - rci-nrp-gpu-02.sdsu.edu
+  # - rci-nrp-gpu-05.sdsu.edu
+  # - gpn-fiona-mizzou-4.rnet.missouri.edu
+  # - gpn-fiona-mizzou-6.rnet.missouri.edu
+  # - hcc-gpengine-shor-c5303.unl.edu
+  # - k8s-3090-01.calit2.optiputer.net
+  # - k8s-3090-02.clemson.edu
+  # - ry-gpu-01.sdsc.optiputer.net
+  # - hcc-chase-shor-c4709.unl.edu
+  # - k8s-chase-ci-07.calit2.optiputer.net
+  # - nautilus-ext-gpu01.fullerton.edu
+  # - uicnrp-fiona.evl.uic.edu
+  # - cph-dgx-node8.humboldt.edu
+  # - gpu-01.csusb.edu
+  # - gpu-01.nrp.mghpcc.org
+  # - k8s-chase-ci-07.calit2.optiputer.net
+  # - hcc-chase-shor-c4709.unl.edu
+  # - uicnrp-fiona.evl.uic.edu
+  # - k8s-gen4-sm.calit2.optiputer.net
+  # - ry-gpu-12.sdsc.optiputer.net
+  # - k8s-3090-01.clemson.edu
+  # - hcc-chase-shor-c4715.unl.edu
+  # - k8s-3090-01.clemson.edu
+  # - k8s-3090-01.usd.edu
+  # - k8s-3090-02.clemson.edu
+# # #  3090
+# #   - node-1-1.sdsc.optiputer.net
+# #   - node-1-4.sdsc.optiputer.net
+# #   - gpn-fiona-mizzou-4.rnet.missouri.edu
+# #   - hcc-gpengine-shor-c5303.unl.edu
+# #   - node-2-1.sdsc.optiputer.net
+# #   - node-2-3.sdsc.optiputer.net
+# # # # #  A100
+#   - hcc-nrp-shor-c5834.unl.edu
+# #  - hcc-nrp-shor-c5934.unl.edu
+#   - hcc-nrp-shor-c5226.unl.edu
+# #  - hcc-nrp-shor-c6034.unl.edu
+#   - k8s-4090-01.calit2.optiputer.net
+#   - k8s-4090-02.calit2.optiputer.net
+# ##  4090
+  # - rci-tide-gpu-01.sdsu.edu
+  # - rci-tide-gpu-02.sdsu.edu
+  # - rci-tide-gpu-03.sdsu.edu
+  # - rci-tide-gpu-04.sdsu.edu
+  # - rci-tide-gpu-05.sdsu.edu
+  # - rci-tide-gpu-06.sdsu.edu
+  # - rci-tide-gpu-07.sdsu.edu
+  # - rci-tide-gpu-08.sdsu.edu
+  # - rci-tide-gpu-09.sdsu.edu
+  # - rci-tide-gpu-10.sdsu.edu
+  # - rci-tide-gpu-11.sdsu.edu
+  # - rci-tide-gpu-12.sdsu.edu
+  # - rci-tide-gpu-13.sdsu.edu
+  # - rci-tide-gpu-14.sdsu.edu
+  # - rci-tide-gpu-15.sdsu.edu
+  # - rci-tide-gpu-16.sdsu.edu
+  # - rci-tide-gpu-17.sdsu.edu
+#  L40
+
+
+# special_gpu: a100
