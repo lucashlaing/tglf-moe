@@ -113,7 +113,7 @@ class MoE(Base):
         expert_idx = torch.argmax(router_probs, dim=-1)
 
         # Prepare output tensor
-        outputs = torch.zeros(batch_size, self.target_dim)
+        outputs = torch.zeros(batch_size, self.target_dim, device=input.device)
         
         # Process each expert's batch
         for expert_id in range(self.num_experts):
