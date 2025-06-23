@@ -136,6 +136,10 @@ class MoETrainer(Base_Trainer):
             tuple: (r2, mode_accuracy)
                 R-squared values and mode accuracy.
         """
+
+        # Move data to device FIRST
+        data = self.move_to_device(data)
+
         # Get predictions and mode logits
         pred, mode_logits = self.get_pred(data)
         _, (target, mode) = self.get_input_target(data)
