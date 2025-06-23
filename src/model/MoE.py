@@ -2,6 +2,8 @@ from .base import Base
 import torch
 import torch.nn as nn
 
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
 class MLP(nn.Module):
     def __init__(self, in_channels, interm_channels, out_channels, hidden_layers, layerNorm):
         super().__init__()
@@ -113,7 +115,7 @@ class MoE(Base):
         expert_idx = torch.argmax(router_probs, dim=-1)
 
         # Prepare output tensor
-        outputs = torch.zeros(batch_size, self.target_dim, device=input.device)
+        outputs = torch.zeros(batch_size, self.target_dim, device=device)
         
         # Process each expert's batch
         for expert_id in range(self.num_experts):

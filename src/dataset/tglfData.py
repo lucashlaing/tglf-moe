@@ -5,7 +5,6 @@ import json
 import os
 from .base import BaseDataPipe
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 class TGLFData(BaseDataPipe):
     """

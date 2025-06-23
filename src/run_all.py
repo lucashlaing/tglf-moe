@@ -1,7 +1,5 @@
 import hydra
 from omegaconf.dictconfig import DictConfig
-import torch.multiprocessing as mp
-mp.set_start_method("spawn", force=True)
 
 from run_train import run_train
 from dataset import TGLFData
