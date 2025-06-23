@@ -116,19 +116,14 @@ class MoETrainer(Base_Trainer):
         Returns:
             Data moved to the device
         """
-        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        
-        def _move_recursive(item):
-            if isinstance(item, torch.Tensor):
-                return item.to(device)
-            elif isinstance(item, tuple):
-                return tuple(_move_recursive(x) for x in item)
-            elif isinstance(item, list):
-                return [_move_recursive(x) for x in item]
-            else:
-                return item
-        
-        return _move_recursive(data)
+        if isinstance(data, torch.Tensor):
+            return data.to(self.device)
+        elif isinstance(data, tuple):
+            return tuple(self.move_to_device(x) for x in data)
+        elif isinstance(data, list):
+            return [self.move_to_device(x) for x in data]
+        else:
+            return data
 
     def get_metrics(self, data):
         """
