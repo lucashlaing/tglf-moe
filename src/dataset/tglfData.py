@@ -97,3 +97,29 @@ class TGLFData(BaseDataPipe):
             return tuple(result)
         else:
             return data[index]
+
+    import torch
+
+    def move_to_device(self, data):
+        """
+        Move data to the appropriate device, handling nested tuples.
+        
+        Args:
+            data: Data to move (can be tensor, tuple, or nested tuple)
+            
+        Returns:
+            Data moved to the device
+        """
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        
+        def _move_recursive(item):
+            if isinstance(item, torch.Tensor):
+                return item.to(device)
+            elif isinstance(item, tuple):
+                return tuple(_move_recursive(x) for x in item)
+            elif isinstance(item, list):
+                return [_move_recursive(x) for x in item]
+            else:
+                return item
+        
+        return _move_recursive(data)
