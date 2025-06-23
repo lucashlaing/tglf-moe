@@ -5,6 +5,8 @@ import json
 import os
 from .base import BaseDataPipe
 
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
 class TGLFData(BaseDataPipe):
     """
     Class to handle TGLF data with mode.
@@ -63,9 +65,9 @@ class TGLFData(BaseDataPipe):
                 target_data[:, i] = np.clip(target_data[:, i], self.target_log10_min[i], self.target_log10_max[i])
 
 
-        inputs = torch.tensor(input_data, dtype=torch.float32)  # convert from  np array to tensor
-        targets = torch.tensor(target_data, dtype=torch.float32)  # convert from np array to tensor
-        mode = torch.tensor(mode_data, dtype=torch.float32)  # convert mode from np array to tensor
+        inputs = torch.tensor(input_data, dtype=torch.float32, device=device)  # convert from  np array to tensor
+        targets = torch.tensor(target_data, dtype=torch.float32, device=device)  # convert from np array to tensor
+        mode = torch.tensor(mode_data, dtype=torch.float32, device=device)  # convert mode from np array to tensor
 
         # asinh the targets as they are too large
         targets = torch.asinh(targets)
