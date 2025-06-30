@@ -11,7 +11,7 @@ from utils import (
     timer,
     InfiniteDataLooper,
 )
-from toolbox.s3utils import upload_s3_path
+from utils.cloud import upload_to_s3
 from tqdm import tqdm
 
 os.environ["XLA_PYTHON_CLIENT_PREALLOCATE"] = "false"
@@ -130,9 +130,9 @@ def run_train(cfg, model_class, dataset_class, trainer_class):
             ratio = (trainer.train_step - cfg.time_warm) / total_steps
             timer.estimate_time("time estimate", ratio)
 
-    s3_base_path = f"TGLF_MOE/{time_stamp}/"
-    upload_s3_path(s3_base_path, cfg.plot_dir)
-    upload_s3_path(s3_base_path, cfg.dump_dir)
+
+    upload_to_s3(time_stamp, cfg.plot_dir)
+    upload_to_s3(time_stamp, cfg.dump_dir)
     if cfg.board:
         wandb.finish()
 
